@@ -1,5 +1,5 @@
 name: automatic build of tool
-
+#
 # Controls when the action will run. Triggers the workflow on push or pull request events
 on:
   workflow_dispatch:
@@ -56,14 +56,14 @@ jobs:
         run: npm start
 
       - name: build (win)
-      if: matrix.platform == 'win'
-      run: npm run distwin
+        if: matrix.platform == 'win'
+        run: npm run distwin
 
       - name: build (linux)
-      if: matrix.platform == 'linux'
-      run: npm run distlinux
+        if: matrix.platform == 'linux'
+        run: npm run distlinux
 
       - name: build (macos)
-      if: matrix.platform == 'macos'
-      run: npm run distmac
+        if: matrix.platform == 'macos'
+        run: npm run distmac
       
