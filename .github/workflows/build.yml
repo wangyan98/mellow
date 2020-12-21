@@ -40,6 +40,11 @@ jobs:
         with:
           node-version: 14.x
       
+#       - name: install 
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y tar gzip gunzip
+      
 #       - name: install npm
 #         run: |
 #           sudo apt-get update
@@ -53,6 +58,12 @@ jobs:
 
       - name: download the geo datas
         run: npm run dlgeo
+        
+#       - name: i can't uncompress mmdb.tar.gz on my computer
+#         run: |
+#           cd ./src/helper/
+#           tar -zxvf mmdb.tar.gz 
+#           mv GeoLite2-Country_20191224/GeoLite2-Country.mmdb geo.mmdb
 
       - name: download the mellow-core
         run: npm run dlcore -- --all
@@ -62,7 +73,9 @@ jobs:
 
       - name: build (win)
         if: matrix.platform == 'win'
-        run: npm run distwin
+        run: |
+          sudo apt-get install -y wine
+          npm run distwin
 
       - name: build (linux)
         if: matrix.platform == 'linux'
